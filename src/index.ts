@@ -1,15 +1,24 @@
-import express from 'express'
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const app = express()
+import databaseService from './services/database.services';
+import { registerController } from './controllers/users.controller';
+import usersRouter from './routes/users.routes';
 
-const port = 3000
+const app = express();
+const port = 8080;
+
+app.use(bodyParser.json());
 
 app.get('/', (res, req) => {
   return req.json({
-    message: 'Heeeellooooooo'
-  })
-})
+    message: 'Heeeellooooooo',
+  });
+});
 
+app.use('/auth', usersRouter);
+
+databaseService.connect();
 app.listen(port, () => {
-  console.log(`App is listenning on port:${port}`)
-})
+  console.log(`App is listenning on port:${port}`);
+});
