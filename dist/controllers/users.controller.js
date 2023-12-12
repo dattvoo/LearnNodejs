@@ -15,7 +15,6 @@ const registerController = async (req, res) => {
     }
     try {
         const result = await users_services_1.default.register(new User_schema_1.default({ email, password }));
-        console.log('result ', result);
         return res.json({
             message: 'Register success',
             data: result,
