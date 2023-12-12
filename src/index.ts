@@ -6,7 +6,7 @@ import { registerController } from './controllers/users.controller';
 import usersRouter from './routes/users.routes';
 
 const app = express();
-const port = 8080;
+const port = 2808;
 
 app.use(bodyParser.json());
 
