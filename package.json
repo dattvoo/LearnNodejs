@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
+    "prettier:fix": "prettier --write .",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install .config/husky",
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias",
-    "start": "node dist/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
-    "prepare": "husky install .config/husky"
+    "start": "node dist/index.js"
   },
   "husky": {
     "hooks": {
