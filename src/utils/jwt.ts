@@ -4,8 +4,8 @@ export const signToken = ({
   payload,
   privateKey = process.env.JWT_SECRET as string,
   options = {
-    algorithm: 'HS256',
-  },
+    algorithm: 'HS256'
+  }
 }: {
   payload: string | { user_id: string; token_type: string | number } | Buffer;
   privateKey?: string;
