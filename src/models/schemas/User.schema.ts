@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 enum UserVerifyStatus {
   Unverified, // chưa xác thực email, mặc định = 0
   Verified, // đã xác thực email
-  Banned, // bị khóa
+  Banned // bị khóa
 }
 interface Media {
   url: string;
@@ -11,17 +11,17 @@ interface Media {
 }
 enum MediaType {
   Image,
-  Video,
+  Video
 }
 enum TweetAudience {
   Everyone, // 0
-  TwitterCircle, // 1
+  TwitterCircle // 1
 }
 enum TweetType {
   Tweet,
   Retweet,
   Comment,
-  QuoteTweet,
+  QuoteTweet
 }
 
 export interface IUser {
