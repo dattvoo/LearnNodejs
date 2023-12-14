@@ -79,3 +79,22 @@ export const registerValidation = validate(
     }
   })
 );
+export const loginValidation = validate(
+  checkSchema({
+    email: {
+      isEmail: {
+        errorMessage: 'The email field is not valid'
+      },
+      notEmpty: {
+        errorMessage: 'This field is required!'
+      },
+      trim: true
+    },
+    password: {
+      isString: true,
+      notEmpty: {
+        errorMessage: 'This field is required!'
+      }
+    }
+  })
+);

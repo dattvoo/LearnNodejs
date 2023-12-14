@@ -49,6 +49,10 @@ class UsersService {
     const result = await databaseService.users.findOne({ email });
     return Boolean(result);
   }
+  async checkLogin(email: string, password: string) {
+    const isExistEmail = this.checkEmailExist(email);
+    console.log(isExistEmail);
+  }
 }
 const usersService = new UsersService();
 

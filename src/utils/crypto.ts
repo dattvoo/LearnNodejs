@@ -9,4 +9,8 @@ function hashPassword(password: string) {
   return sha256(password + process.env.PASSWORD_SECRET);
 }
 
+export function verifyPassword(enteredPassword: string, storedHash: string) {
+  const enteredPasswordHash = hashPassword(enteredPassword);
+  return enteredPasswordHash === storedHash;
+}
 export default hashPassword;
