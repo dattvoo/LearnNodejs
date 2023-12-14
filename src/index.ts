@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import databaseService from './services/database.services';
-import { registerController } from './controllers/users.controller';
 import usersRouter from './routes/users.routes';
 
 const app = express();
