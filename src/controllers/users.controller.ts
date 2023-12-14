@@ -3,7 +3,7 @@ import { ParamsDictionary } from 'express-serve-static-core';
 import { RegisterReqBody } from '~/models/requests/User.requests';
 import databaseService from '~/services/database.services';
 import usersService from '~/services/users.services';
-import hashPassword, { verifyPassword } from '~/utils/crypto';
+import { verifyPassword } from '~/utils/crypto';
 
 export const registerController = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
   const { email, password } = req.body;
@@ -12,18 +12,11 @@ export const registerController = async (req: Request<ParamsDictionary, any, Reg
       message: 'Email or Password not valid'
     });
   }
-  try {
-    const result = await usersService.register(req.body);
-
-    return res.json({
-      message: 'Register success',
-      data: result
-    });
-  } catch (error) {
-    return res.status(400).json({
-      error: 'Register failed'
-    });
-  }
+  const result = await usersService.register(req.body);
+  return res.json({
+    message: 'Register success',
+    data: result
+  });
 };
 export const loginController = async (
   req: Request<ParamsDictionary, any, { email: string; password: string }>,
@@ -39,8 +32,6 @@ export const loginController = async (
       });
     }
     const checkPassword = verifyPassword(password, user.password);
-    console.log('user.password', user.password);
-    console.log('hashPassword(password)', hashPassword(password));
 
     if (checkPassword) {
       return res.json({
