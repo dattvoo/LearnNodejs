@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 
-export const wrapRequestHandler = (func: any) => {
+export const wrapRequestHandler = (func: RequestHandler) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       await func(req, res, next);
     } catch (error) {
-      console.log('Error', error);
+      console.log('Co o day khong z?', error);
       next(error);
     }
   };

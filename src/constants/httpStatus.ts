@@ -1,12 +1,11 @@
-const httpStatus = {
+const HTTP_Status = {
   OK: 200,
   CREATEED: 201,
   ACCEPTED: 202,
   NO_CONTENT: 204,
-  MOVE_PERMANENTLY: 301,
   UNAUTHORIZED: 401,
-  UNPROCESSABLE_ENTITY: 402,
   NOT_FOUND: 404,
+  UNPROCESSABLE_ENTITY: 422,
   INTERNAL_SERVER_ERROR: 500
 };
-export default httpStatus;
+export default HTTP_Status;

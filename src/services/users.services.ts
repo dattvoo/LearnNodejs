@@ -4,7 +4,9 @@ import { RegisterReqBody } from '~/models/requests/User.requests';
 import hashPassword from '~/utils/crypto';
 import { signToken } from '~/utils/jwt';
 import { TokenType } from '~/constants/enum';
+import dotenv from 'dotenv';
 
+dotenv.config();
 class UsersService {
   private async signAccessToken(user_id: string) {
     return await signToken({
@@ -51,7 +53,6 @@ class UsersService {
   }
   async checkLogin(email: string, password: string) {
     const isExistEmail = this.checkEmailExist(email);
-    console.log(isExistEmail);
   }
 }
 const usersService = new UsersService();

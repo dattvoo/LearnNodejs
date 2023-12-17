@@ -6,12 +6,6 @@ import usersService from '~/services/users.services';
 import { verifyPassword } from '~/utils/crypto';
 
 export const registerController = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(404).json({
-      message: 'Email or Password not valid'
-    });
-  }
   const result = await usersService.register(req.body);
   return res.json({
     message: 'Register success',
