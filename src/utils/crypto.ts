@@ -1,4 +1,7 @@
 import { createHash } from 'crypto';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Thuat toan hashpass
 function sha256(content: string) {
