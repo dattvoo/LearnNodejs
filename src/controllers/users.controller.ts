@@ -12,6 +12,7 @@ export const registerController = async (req: Request<ParamsDictionary, any, Reg
     data: result
   });
 };
+
 export const loginController = async (
   req: Request<ParamsDictionary, any, { email: string; password: string }>,
   res: Response
@@ -25,11 +26,18 @@ export const loginController = async (
         message: 'Email is not valid'
       });
     }
+
     const checkPassword = verifyPassword(password, user.password);
 
     if (checkPassword) {
+      const user_id = user._id;
+      const { access_token, refresh_token } = await usersService.login(user_id.toString());
       return res.json({
-        message: 'Login Success!'
+        message: 'Login Success!',
+        data: {
+          access_token,
+          refresh_token
+        }
       });
     }
     return res.json({ message: 'Email or password is not valid!' });
